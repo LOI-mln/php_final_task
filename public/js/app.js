@@ -110,11 +110,18 @@ function toggleLike(postId, btn) {
         .then(data => {
             if (data.status === 'success') {
                 const countSpan = btn.querySelector('.count');
+                const icon = btn.querySelector('i');
+                
                 countSpan.innerText = data.count;
+                
                 if (data.action === 'added') {
                     btn.classList.add('liked');
+                    icon.classList.remove('bi-heart');
+                    icon.classList.add('bi-heart-fill');
                 } else {
                     btn.classList.remove('liked');
+                    icon.classList.remove('bi-heart-fill');
+                    icon.classList.add('bi-heart');
                 }
             } else {
                 window.location.href = 'index.php?controller=auth&action=login';

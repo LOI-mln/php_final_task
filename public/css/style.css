@@ -126,3 +126,41 @@
 .like-btn.btn-danger i {
     animation: heartBeat 1s;
 }
+/* Like Button Styling */
+.btn-like {
+    border: none;
+    color: #dc3545;
+    padding: 0;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: transparent;
+}
+
+.btn-like:hover {
+    background-color: transparent;
+    color: #bb2d3b;
+    transform: scale(1.1);
+}
+
+.btn-like.liked {
+    background-color: transparent;
+    color: #dc3545;
+    border: none;
+}
+
+.btn-like.liked:hover {
+    background-color: transparent;
+    color: #bb2d3b;
+}
+
+.btn-like i {
+    font-size: 1.5em;
+    transition: transform 0.2s;
+}
+
+.btn-like:active i {
+    transform: scale(1.2);
+}
+

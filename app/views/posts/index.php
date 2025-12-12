@@ -33,10 +33,10 @@
 
                     <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
                         <!-- LIKE BTN -->
-                        <button class="btn btn-sm like-btn <?= $post['has_liked'] ? 'btn-danger' : 'btn-outline-danger' ?>"
+                        <button class="btn btn-sm btn-like <?= $post['has_liked'] ? 'liked' : '' ?>"
                             onclick="toggleLike(<?= $post['id'] ?>, this)">
-                            <i class="bi bi-heart-fill"></i> J'aime <span
-                                class="badge bg-light text-dark border ms-1 count"><?= $post['like_count'] ?></span>
+                            <i class="bi <?= $post['has_liked'] ? 'bi-heart-fill' : 'bi-heart' ?>"></i>
+                            <span class="count ms-1 fw-bold"><?= $post['like_count'] ?></span>
                         </button>
 
                         <div>
