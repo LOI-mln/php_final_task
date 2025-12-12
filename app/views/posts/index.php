@@ -4,7 +4,7 @@
 
         <?php if (empty($posts)): ?>
             <div class="alert alert-info text-center">
-                <i class="bi bi-info-circle display-4 d-block mb-3"></i>
+                <i class="ph ph-info display-4 d-block mb-3"></i>
                 <p class="lead mb-0">Aucune publication trouvée.</p>
                 <?php if (isset($_GET['q'])): ?>
                     <p class="mt-2"><a href="index.php?controller=post&action=index" class="btn btn-sm btn-outline-primary">Voir
@@ -35,20 +35,20 @@
                         <!-- LIKE BTN -->
                         <button class="btn btn-sm btn-like <?= $post['has_liked'] ? 'liked' : '' ?>"
                             onclick="toggleLike(<?= $post['id'] ?>, this)">
-                            <i class="bi <?= $post['has_liked'] ? 'bi-heart-fill' : 'bi-heart' ?>"></i>
+                            <i class="<?= $post['has_liked'] ? 'ph-fill' : '' ?> ph ph-heart"></i>
                             <span class="count ms-1 fw-bold"><?= $post['like_count'] ?></span>
                         </button>
 
                         <div>
                             <a href="index.php?controller=post&action=show&id=<?= $post['id'] ?>"
                                 class="btn btn-sm btn-primary">
-                                <i class="bi bi-chat-left-text"></i> Commentaires
+                                <i class="ph ph-chat-text"></i> Commentaires
                             </a>
 
                             <?php if ($_SESSION['user_id'] == $post['utilisateur_id']): ?>
                                 <a href="index.php?controller=post&action=delete&id=<?= $post['id'] ?>"
                                     class="btn btn-sm btn-outline-danger ms-2" onclick="return confirm('Êtes-vous sûr ?')">
-                                    <i class="bi bi-trash"></i>
+                                    <i class="ph ph-trash"></i>
                                 </a>
                             <?php endif; ?>
                         </div>

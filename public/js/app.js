@@ -26,11 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateIcon(theme) {
         if (!toggleBtn) return;
         if (theme === 'dark') {
-            toggleBtn.innerHTML = '<i class="bi bi-sun-fill"></i>';
-            toggleBtn.classList.replace('btn-outline-dark', 'btn-outline-light');
+            toggleBtn.innerHTML = '<i class="ph-fill ph-sun"></i>';
         } else {
-            toggleBtn.innerHTML = '<i class="bi bi-moon-stars-fill"></i>';
-            toggleBtn.classList.replace('btn-outline-light', 'btn-outline-dark');
+            toggleBtn.innerHTML = '<i class="ph-fill ph-moon-stars"></i>';
         }
     }
 
@@ -111,17 +109,17 @@ function toggleLike(postId, btn) {
             if (data.status === 'success') {
                 const countSpan = btn.querySelector('.count');
                 const icon = btn.querySelector('i');
-                
+
                 countSpan.innerText = data.count;
-                
+
                 if (data.action === 'added') {
                     btn.classList.add('liked');
-                    icon.classList.remove('bi-heart');
-                    icon.classList.add('bi-heart-fill');
+                    icon.classList.add('ph-fill');
+                    icon.classList.add('ph-heart');
                 } else {
                     btn.classList.remove('liked');
-                    icon.classList.remove('bi-heart-fill');
-                    icon.classList.add('bi-heart');
+                    icon.classList.remove('ph-fill');
+                    icon.classList.add('ph-heart');
                 }
             } else {
                 window.location.href = 'index.php?controller=auth&action=login';

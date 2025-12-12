@@ -2,18 +2,20 @@
     <div class="col-md-8">
         <div class="card shadow-sm mb-4">
             <div class="card-body text-center">
-                <i class="bi bi-person-circle display-1 text-primary mb-3"></i>
+                <i class="ph ph-user-circle display-1 text-primary mb-3"></i>
                 <h2 class="card-title"><?= htmlspecialchars($user['nom']) ?></h2>
                 <p class="text-muted"><?= htmlspecialchars($user['email']) ?></p>
-                <p class="small text-secondary">Inscrit le <?= date('d/m/Y', strtotime($user['date_inscription'])) ?></p>
-                
+                <p class="small text-secondary">Inscrit le <?= date('d/m/Y', strtotime($user['date_inscription'])) ?>
+                </p>
+
                 <div class="mt-3">
                     <span class="badge bg-primary rounded-pill"><?= count($posts) ?> Publications</span>
                 </div>
 
                 <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $user['id']): ?>
                     <div class="mt-4">
-                        <a href="index.php?controller=profile&action=edit" class="btn btn-outline-secondary btn-sm">Modifier le profil</a>
+                        <a href="index.php?controller=profile&action=edit" class="btn btn-outline-secondary btn-sm">Modifier
+                            le profil</a>
                     </div>
                 <?php endif; ?>
             </div>
@@ -41,7 +43,7 @@
                             <a href="index.php?controller=post&action=show&id=<?= $post['id'] ?>"
                                 class="btn btn-sm btn-outline-primary">Lire la suite</a>
                             <span class="text-muted small">
-                                <i class="bi bi-heart-fill text-danger"></i> <?= $post['like_count'] ?? 0 ?>
+                                <i class="ph-fill ph-heart text-danger"></i> <?= $post['like_count'] ?? 0 ?>
                             </span>
                         </div>
                     </div>
