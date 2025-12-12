@@ -11,7 +11,13 @@ class BaseController
         $viewFile = __DIR__ . '/../Views/' . $view . '.php';
 
         if (file_exists($viewFile)) {
-            require_once $viewFile;
+            // Start output buffering
+            ob_start();
+            require $viewFile;
+            $content = ob_get_clean();
+
+            // Include the main layout wrapper
+            require_once __DIR__ . '/../Views/layouts/main.php';
         } else {
             echo "View '$view' not found.";
         }

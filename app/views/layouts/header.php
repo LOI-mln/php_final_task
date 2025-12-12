@@ -45,9 +45,12 @@
                 </ul>
 
                 <?php if (isset($_SESSION['user_id'])): ?>
-                    <form class="d-flex position-relative me-3" role="search">
-                        <input class="form-control me-2" type="search" id="live-search" placeholder="Rechercher..."
-                            aria-label="Search" autocomplete="off">
+                    <form class="d-flex position-relative me-3" role="search" action="index.php" method="GET">
+                        <input type="hidden" name="controller" value="post">
+                        <input type="hidden" name="action" value="index">
+                        <input class="form-control me-2" type="search" name="q" id="live-search" placeholder="Rechercher..."
+                            aria-label="Search" autocomplete="off"
+                            value="<?= isset($_GET['q']) ? htmlspecialchars($_GET['q']) : '' ?>">
                         <div id="search-results" class="list-group position-absolute w-100 mt-5 shadow"
                             style="display:none; z-index: 1000; top: 0;"></div>
                     </form>

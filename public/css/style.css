@@ -1,5 +1,62 @@
 /* Custom overrides for Reseau Social */
 
+:root {
+    /* Rebrand Primary to Dark Gray (#343a40 is Bootstrap's dark) */
+    --bs-primary: #343a40;
+    --bs-primary-rgb: 52, 58, 64;
+    --bs-link-color: #343a40;
+    --bs-link-hover-color: #212529;
+}
+
+/* Custom Primary Button (Dark Gray default) */
+.btn-primary {
+    --bs-btn-bg: #343a40;
+    --bs-btn-border-color: #343a40;
+    --bs-btn-hover-bg: #23272b;
+    --bs-btn-hover-border-color: #1d2124;
+}
+
+.btn-outline-primary {
+    --bs-btn-color: #343a40;
+    --bs-btn-border-color: #343a40;
+    --bs-btn-hover-bg: #343a40;
+    --bs-btn-hover-border-color: #343a40;
+}
+
+/* Navbar Override - Always keep it darkish gray (consistent brand) */
+.bg-primary {
+    background-color: #343a40 !important;
+}
+
+/* --- DARK MODE ADAPTATIONS --- */
+[data-bs-theme="dark"] {
+    /* In dark mode, Body is #212529. 
+       We want text-primary and buttons to pop, so we make them Light. */
+    --bs-primary: #f8f9fa;
+    --bs-primary-rgb: 248, 249, 250;
+    --bs-link-color: #ced4da;
+    --bs-link-hover-color: #fff;
+}
+
+[data-bs-theme="dark"] .btn-primary {
+    /* Invert button to be White/Light on Dark BG */
+    --bs-btn-color: #000;
+    --bs-btn-bg: #f8f9fa;
+    --bs-btn-border-color: #f8f9fa;
+    --bs-btn-hover-bg: #e2e6ea;
+    --bs-btn-hover-border-color: #dae0e5;
+}
+
+[data-bs-theme="dark"] .btn-outline-primary {
+    --bs-btn-color: #f8f9fa;
+    --bs-btn-border-color: #f8f9fa;
+    --bs-btn-hover-bg: #f8f9fa;
+    --bs-btn-hover-border-color: #f8f9fa;
+    --bs-btn-hover-color: #000;
+}
+
+/* Keep text-primary visible in dark mode (it uses --bs-primary which we set to light above) */
+
 /* Live Search Dropdown */
 #search-results .list-group-item {
     cursor: pointer;
@@ -8,6 +65,17 @@
 #search-results .list-group-item:hover {
     background-color: #f8f9fa;
 }
+
+[data-bs-theme="dark"] #search-results .list-group-item:hover {
+    background-color: #343a40;
+}
+
+[data-bs-theme="dark"] #search-results .list-group-item {
+    background-color: #212529;
+    color: #fff;
+    border-color: #495057;
+}
+
 
 /* Animations */
 .post {
@@ -18,11 +86,18 @@
     transform: translateY(-2px);
 }
 
-/* Content Editable focus */
+/* Content Editable focus - Change to Gray */
 [contenteditable="true"]:focus {
-    outline: 2px solid #0d6efd;
+    outline: 2px solid #6c757d;
     padding: 2px;
     border-radius: 4px;
+}
+
+/* Bootstrap Focus Ring Override - Gray */
+.btn:focus,
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(108, 117, 125, 0.25);
+    border-color: #6c757d;
 }
 
 /* Like Animation */
@@ -51,10 +126,3 @@
 .like-btn.btn-danger i {
     animation: heartBeat 1s;
 }
-
-/* Dark Mode tweaks if needed (Bootstrap handles most) */
-[data-bs-theme="dark"] .card {
-    border-color: #444;
-}
-
-/* Notification Badge position adjustment is handled by Bootstrap classes now */

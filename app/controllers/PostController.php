@@ -22,7 +22,13 @@ class PostController extends BaseController
     public function index()
     {
         $this->requireAuth();
-        $posts = $this->postModel->getAll();
+        $query = $_GET['q'] ?? null;
+
+        if ($query) {
+            $posts = $this->postModel->search($query);
+        } else {
+            $posts = $this->postModel->getAll();
+        }
 
         // Enrich posts with current user specific data (e.g. hasLiked)
         foreach ($posts as &$post) {

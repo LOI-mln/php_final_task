@@ -45,7 +45,13 @@ class Post extends BaseModel
 
     public function search($term)
     {
-        $stmt = $this->pdo->prepare("SELECT p.*, u.nom as author_name FROM posts p JOIN users u ON p.utilisateur_id = u.id WHERE titre LIKE ? OR contenu LIKE ? LIMIT 10");
+        $sql = "SELECT p.*, u.nom as author_name, 
+                (SELECT COUNT(*) FROM likes WHERE post_id = p.id) as like_count
+                FROM posts p 
+                JOIN users u ON p.utilisateur_id = u.id 
+                WHERE p.titre LIKE ? OR p.contenu LIKE ? 
+                ORDER BY p.date_publication DESC";
+        $stmt = $this->pdo->prepare($sql);
         $stmt->execute(["%$term%", "%$term%"]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
