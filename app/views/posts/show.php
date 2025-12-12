@@ -1,6 +1,5 @@
 <div class="row justify-content-center">
     <div class="col-md-8">
-        <!-- Post -->
         <div class="card mb-4 shadow-sm" data-id="<?= $post['id'] ?>">
             <div class="card-body">
                 <h3 class="card-title"><?= htmlspecialchars($post['titre']) ?></h3>
@@ -13,7 +12,6 @@
             </div>
         </div>
 
-        <!-- Comments Section -->
         <div class="card shadow-sm">
             <div class="card-header bg-light">
                 <h4 class="mb-0">Commentaires</h4>
@@ -21,7 +19,7 @@
             <div class="card-body">
                 <div id="comments-list" class="mb-4">
                     <?php if (empty($comments)): ?>
-                        <p class="text-muted text-center">Soyez le premier à commenter !</p>
+
                     <?php else: ?>
                         <?php foreach ($comments as $comment): ?>
                             <div class="d-flex mb-3 border-bottom pb-3 comment" data-id="<?= $comment['id'] ?>">
@@ -43,7 +41,7 @@
                                         <small class="text-muted"><?= $comment['date_commentaire'] ?></small>
                                     </div>
                                     <p class="mt-1 mb-0"
-                                        contenteditable="<?= ($_SESSION['user_id'] == $comment['utilisateur_id']) ? 'true' : 'false' ?>"
+                                        contenteditable="<?= (isset($_SESSION['user_id']) && (int) $_SESSION['user_id'] === (int) $comment['utilisateur_id']) ? 'true' : 'false' ?>"
                                         onblur="updateComment(<?= $comment['id'] ?>, this.innerText)">
                                         <?= nl2br(htmlspecialchars($comment['contenu'])) ?>
                                     </p>
@@ -53,7 +51,6 @@
                     <?php endif; ?>
                 </div>
 
-                <!-- Add Comment -->
                 <div class="input-group">
                     <textarea id="new-comment-content" class="form-control" placeholder="Ajouter un commentaire..."
                         rows="2"></textarea>

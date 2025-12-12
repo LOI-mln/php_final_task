@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- DARK MODE (Bootstrap 5.3 Native) ---
+    // Theme Management
     const toggleBtn = document.getElementById('dark-mode-toggle');
     const htmlElement = document.documentElement;
 
-    // Check saved theme or system preference
     const savedTheme = localStorage.getItem('theme');
     const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     const currentTheme = savedTheme || systemTheme;
@@ -32,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- LIVE SEARCH ---
+    // Live Search
     const searchInput = document.getElementById('live-search');
     const searchResults = document.getElementById('search-results');
 
@@ -62,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
         }, 300));
 
-        // Close search on click outside
         document.addEventListener('click', (e) => {
             if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
                 searchResults.style.display = 'none';
@@ -70,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- NOTIFICATIONS POLLING ---
+    // Notifications
     const notifBadge = document.getElementById('notif-badge');
     if (notifBadge) {
         setInterval(() => {
@@ -88,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// --- HELPER DEBOUNCE ---
+// Utils
 function debounce(func, wait) {
     let timeout;
     return function (...args) {
@@ -97,7 +95,6 @@ function debounce(func, wait) {
     };
 }
 
-// --- LIKE REACTION ---
 function toggleLike(postId, btn) {
     fetch('index.php?controller=reaction&action=toggleLike', {
         method: 'POST',
@@ -127,7 +124,6 @@ function toggleLike(postId, btn) {
         });
 }
 
-// --- VOTE ON COMMENT ---
 function vote(commentId, type, btn) {
     fetch('index.php?controller=reaction&action=vote', {
         method: 'POST',
@@ -137,7 +133,6 @@ function vote(commentId, type, btn) {
         .then(res => res.json())
         .then(data => {
             if (data.status === 'success') {
-                // Find score element
                 const parent = btn.parentElement;
                 const scoreSpan = parent.querySelector('.vote-score');
                 scoreSpan.innerText = data.score;
@@ -147,7 +142,6 @@ function vote(commentId, type, btn) {
         });
 }
 
-// --- INLINE EDIT (POSTS & COMMENTS) ---
 function updatePost(id, field, value) {
     fetch('index.php?controller=post&action=edit', {
         method: 'POST',
@@ -164,7 +158,6 @@ function updateComment(id, value) {
     }).then(res => res.json()).then(console.log);
 }
 
-// --- ADD COMMENT ---
 function addComment(postId) {
     const input = document.getElementById('new-comment-content');
     const content = input.value;
@@ -183,7 +176,6 @@ function addComment(postId) {
         });
 }
 
-// --- MARK NOTIFICATION READ ---
 function markRead(id, btn) {
     fetch('index.php?controller=notification&action=markRead', {
         method: 'POST',

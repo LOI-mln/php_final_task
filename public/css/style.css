@@ -1,271 +1,114 @@
-/* Hollow Knight Theme - Reseau Social */
-
-:root {
-    /* Void Theme (Default) */
-    --hk-bg: #08090c;         /* Deepest Void */
-    --hk-card-bg: #131519;    /* Dark Slate */
-    --hk-text-main: #dcdde1;  /* Ghostly White */
-    --hk-text-muted: #7f8fa6; /* Faded Text */
-    --hk-accent: #f5f6fa;     /* Pure White/Soul */
-    --hk-primary: #57606f;    /* Neutral Grey (was Blue) */
-    --hk-border: #2f3640;     /* Subtle Border */
-    --hk-glow: 0 0 10px rgba(255, 255, 255, 0.1);
-    
-    /* Font Families */
-    --font-heading: 'Lato', sans-serif; /* Natural font */
-    --font-body: 'Lato', sans-serif;
-
-    /* Bootstrap Overrides */
-    --bs-primary: var(--hk-primary);
-    --bs-primary-rgb: 87, 96, 111;
-    --bs-link-color: var(--hk-text-main);
-    --bs-link-hover-color: var(--hk-accent);
-}
-
+/* Base & Typography */
 body {
-    background-color: var(--hk-bg);
-    color: var(--hk-text-main);
-    font-family: var(--font-body);
-    background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23181a20\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+    font-family: 'Lato', sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
 }
 
-h1, h2, h3, h4, h5, h6, .navbar-brand {
-    font-family: var(--font-heading);
-    letter-spacing: 1px;
-    color: var(--hk-accent);
-}
-
-/* Navbar */
+/* Navigation */
 .navbar {
-    background-color: rgba(19, 21, 25, 0.95) !important;
-    border-bottom: 1px solid var(--hk-border);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    backdrop-filter: blur(5px);
+    background-color: #343a40 !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.navbar-brand {
-    font-weight: 700;
-    font-size: 1.5rem;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-}
-
+.navbar-brand,
 .nav-link {
-    color: var(--hk-text-muted) !important;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
+    color: #fff !important;
 }
 
-.nav-link:hover, .nav-link.active {
-    color: var(--hk-accent) !important;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-}
-
-/* Cards */
+/* Cards & Containers */
 .card {
-    background-color: var(--hk-card-bg);
-    border: 1px solid var(--hk-border);
-    border-radius: 4px; /* Sharper corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4), var(--hk-glow);
-    border-color: #4b5563;
-}
-
-.card-header, .card-footer {
-    background-color: rgba(0, 0, 0, 0.2);
-    border-color: var(--hk-border);
-}
-
-.card-title {
-    color: var(--hk-accent);
-}
-
-.text-muted {
-    color: var(--hk-text-muted) !important;
-}
-
-/* Inputs */
-.form-control {
-    background-color: #ffffff;
-    border: 1px solid var(--hk-border);
-    color: #000000;
-}
-
-.form-control:focus {
-    background-color: #ffffff;
-    border-color: var(--hk-text-muted);
-    color: #000000;
-    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.2);
+    background-color: #fff;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 /* Buttons */
 .btn-primary {
-    background-color: transparent;
-    border: 1px solid var(--hk-text-main);
-    color: var(--hk-text-main);
-    font-family: var(--font-heading);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 0.85rem;
-    transition: all 0.3s ease;
+    background-color: #6c757d;
+    border-color: #6c757d;
 }
 
 .btn-primary:hover {
-    background-color: var(--hk-text-main);
-    color: var(--hk-bg);
-    border-color: var(--hk-text-main);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    background-color: #5a6268;
+    border-color: #545b62;
 }
 
-.btn-outline-primary {
-    color: var(--hk-text-muted);
-    border-color: var(--hk-border);
+#live-search {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
 }
 
-.btn-outline-primary:hover {
-    background-color: var(--hk-border);
-    color: var(--hk-accent);
-    border-color: var(--hk-text-muted);
+#live-search::placeholder {
+    color: rgba(255, 255, 255, 0.7);
 }
 
-/* Like Button (Custom Heart) */
+#live-search:focus {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    outline: none;
+    box-shadow: none;
+}
+
 .btn-like {
     border: none;
-    color: var(--hk-text-muted); /* Default grey */
-    padding: 0;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    background-color: transparent;
+    background: transparent;
+    color: #6c757d;
 }
 
-.btn-like:hover {
-    background-color: transparent;
-    color: #ff6b6b; /* Soft red on hover */
-    transform: scale(1.1);
-    text-shadow: 0 0 10px rgba(220, 53, 69, 0.4);
-}
-
+.btn-like:hover,
 .btn-like.liked {
-    background-color: transparent;
-    color: #ff4757; /* Bright red when liked */
-    border: none;
-    filter: drop-shadow(0 0 5px rgba(255, 71, 87, 0.5));
+    color: #dc3545;
 }
 
-.btn-like.liked:hover {
-    color: #ff6b6b;
+[data-bs-theme="dark"] body {
+    background-color: #212529;
+    color: #f8f9fa;
 }
 
-.btn-like i {
-    font-size: 1.5em;
-    transition: transform 0.2s;
+[data-bs-theme="dark"] .card {
+    background-color: #2c3238;
+    color: #f8f9fa;
 }
 
-.btn-like:active i {
-    transform: scale(1.2);
+[data-bs-theme="dark"] #search-results {
+    background-color: #2c3238;
+    border-color: #495057;
 }
 
-/* Dropdown */
-.dropdown-menu {
-    background-color: var(--hk-card-bg);
-    border: 1px solid var(--hk-border);
+[data-bs-theme="dark"] .navbar {}
+
+[data-bs-theme="dark"] .bg-light {
+    background-color: #343a40 !important;
+    color: #f8f9fa;
 }
 
-.dropdown-item {
-    color: var(--hk-text-main);
+[data-bs-theme="dark"] .form-control {
+    background-color: #343a40;
+    border-color: #495057;
+    color: #f8f9fa;
 }
 
-.dropdown-item:hover {
-    background-color: var(--hk-border);
-    color: var(--hk-accent);
+[data-bs-theme="dark"] .form-control:focus {
+    background-color: #3b444b;
+    color: #fff;
+    border-color: #6c757d;
 }
 
-.dropdown-divider {
-    border-top-color: var(--hk-border);
+[data-bs-theme="dark"] .border {
+    border-color: #495057 !important;
 }
 
-/* Alerts */
-.alert-info {
-    background-color: rgba(87, 96, 111, 0.2);
-    border-color: rgba(87, 96, 111, 0.4);
-    color: #d1d8e0;
-}
-
-/* Badges */
-.badge {
-    font-family: var(--font-body);
-    font-weight: normal;
-}
-
-/* Scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--hk-bg);
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--hk-border);
+    background: #6c757d;
     border-radius: 5px;
 }
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--hk-text-muted);
-}
-
-/* Dream Mode (Light Mode Override) */
-[data-bs-theme='light'] {
-    /* Dream Theme */
-    --hk-bg: #f7f1e3;         /* Cream/Paper */
-    --hk-card-bg: #fff;       /* White */
-    --hk-text-main: #2c3e50;  /* Dark Blue/Grey */
-    --hk-text-muted: #7f8c8d;
-    --hk-accent: #e1b12c;     /* Gold/Dream */
-    --hk-primary: #e1b12c;
-    --hk-border: #d1ccc0;
-    --hk-glow: 0 0 10px rgba(225, 177, 44, 0.3);
-
-    /* Bootstrap Overrides for Light Mode */
-    --bs-primary: var(--hk-primary);
-    --bs-primary-rgb: 225, 177, 44;
-    --bs-link-color: var(--hk-text-main);
-    --bs-link-hover-color: var(--hk-primary);
-}
-
-[data-bs-theme='light'] body {
-    background-image: none; /* Or a light pattern */
-}
-
-[data-bs-theme='light'] .navbar {
-    background-color: #fff !important;
-    border-bottom: 1px solid #e1b12c;
-}
-
-[data-bs-theme='light'] .navbar-brand, 
-[data-bs-theme='light'] .nav-link.active,
-[data-bs-theme='light'] .nav-link:hover {
-    color: #e1b12c !important;
-    text-shadow: none;
-}
-
-[data-bs-theme='light'] .nav-link {
-    color: #2c3e50 !important;
-}
-
-[data-bs-theme='light'] .btn-primary {
-    border-color: #e1b12c;
-    color: #e1b12c;
-}
-
-[data-bs-theme='light'] .btn-primary:hover {
-    background-color: #e1b12c;
-    color: #fff;
-}
-

@@ -16,7 +16,7 @@
                 <div class="card mb-4 shadow-sm post" data-id="<?= $post['id'] ?>">
                     <div class="card-body">
                         <h5 class="card-title"
-                            contenteditable="<?= ($_SESSION['user_id'] == $post['utilisateur_id']) ? 'true' : 'false' ?>"
+                            contenteditable="<?= (isset($_SESSION['user_id']) && (int) $_SESSION['user_id'] === (int) $post['utilisateur_id']) ? 'true' : 'false' ?>"
                             onblur="updatePost(<?= $post['id'] ?>, 'titre', this.innerText)">
                             <?= htmlspecialchars($post['titre']) ?>
                         </h5>
@@ -25,14 +25,13 @@
                         </h6>
 
                         <div class="card-text mt-3 mb-3 p-1 rounded"
-                            contenteditable="<?= ($_SESSION['user_id'] == $post['utilisateur_id']) ? 'true' : 'false' ?>"
+                            contenteditable="<?= (isset($_SESSION['user_id']) && (int) $_SESSION['user_id'] === (int) $post['utilisateur_id']) ? 'true' : 'false' ?>"
                             onblur="updatePost(<?= $post['id'] ?>, 'contenu', this.innerText)">
                             <?= nl2br(htmlspecialchars($post['contenu'])) ?>
                         </div>
                     </div>
 
                     <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
-                        <!-- LIKE BTN -->
                         <button class="btn btn-sm btn-like <?= $post['has_liked'] ? 'liked' : '' ?>"
                             onclick="toggleLike(<?= $post['id'] ?>, this)">
                             <i class="bi <?= $post['has_liked'] ? 'bi-heart-fill' : 'bi-heart' ?>"></i>
