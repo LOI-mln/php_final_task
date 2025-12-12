@@ -7,8 +7,8 @@
     <title>Reseau Social</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Phosphor Icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -24,16 +24,16 @@
                 <ul class="navbar-nav me-auto">
                     <?php if (isset($_SESSION['user_id'])): ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?controller=post&action=index"><i class="ph ph-house"></i>
-                                Fil d'actualité</a>
+                            <a class="nav-link" href="index.php?controller=post&action=index"><i
+                                    class="bi bi-house-door-fill"></i> Fil d'actualité</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?controller=post&action=create"><i
-                                    class="ph ph-plus-square"></i> Publier</a>
+                                    class="bi bi-plus-square-fill"></i> Publier</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link position-relative" href="index.php?controller=notification&action=index">
-                                <i class="ph ph-bell"></i> Notifications
+                                <i class="bi bi-bell-fill"></i> Notifications
                                 <span id="notif-badge"
                                     class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
                                     style="display:none;">
@@ -58,7 +58,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                <i class="ph ph-user-circle"></i> Mon Compte
+                                <i class="bi bi-person-circle"></i> Mon Compte
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item"
@@ -82,7 +82,7 @@
                 <?php endif; ?>
 
                 <button id="dark-mode-toggle" class="btn btn-outline-light ms-2"><i
-                        class="ph ph-moon-stars"></i></button>
+                        class="bi bi-moon-stars-fill"></i></button>
             </div>
         </div>
     </nav>

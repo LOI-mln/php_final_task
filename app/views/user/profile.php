@@ -2,7 +2,7 @@
     <div class="col-md-8">
         <div class="card shadow-sm mb-4">
             <div class="card-body text-center">
-                <i class="ph ph-user-circle display-1 text-primary mb-3"></i>
+                <i class="bi bi-person-circle display-1 text-primary mb-3"></i>
                 <h2 class="card-title"><?= htmlspecialchars($user['nom']) ?></h2>
                 <p class="text-muted"><?= htmlspecialchars($user['email']) ?></p>
                 <p class="small text-secondary">Inscrit le <?= date('d/m/Y', strtotime($user['date_inscription'])) ?>
@@ -43,7 +43,7 @@
                             <a href="index.php?controller=post&action=show&id=<?= $post['id'] ?>"
                                 class="btn btn-sm btn-outline-primary">Lire la suite</a>
                             <span class="text-muted small">
-                                <i class="ph-fill ph-heart text-danger"></i> <?= $post['like_count'] ?? 0 ?>
+                                <i class="bi bi-heart-fill text-danger"></i> <?= $post['like_count'] ?? 0 ?>
                             </span>
                         </div>
                     </div>

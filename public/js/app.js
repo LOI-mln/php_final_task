@@ -26,9 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateIcon(theme) {
         if (!toggleBtn) return;
         if (theme === 'dark') {
-            toggleBtn.innerHTML = '<i class="ph-fill ph-sun"></i>';
+            toggleBtn.innerHTML = '<i class="bi bi-sun-fill"></i>';
         } else {
-            toggleBtn.innerHTML = '<i class="ph-fill ph-moon-stars"></i>';
+            toggleBtn.innerHTML = '<i class="bi bi-moon-stars-fill"></i>';
         }
     }
 
@@ -114,12 +114,12 @@ function toggleLike(postId, btn) {
 
                 if (data.action === 'added') {
                     btn.classList.add('liked');
-                    icon.classList.add('ph-fill');
-                    icon.classList.add('ph-heart');
+                    icon.classList.remove('bi-heart');
+                    icon.classList.add('bi-heart-fill');
                 } else {
                     btn.classList.remove('liked');
-                    icon.classList.remove('ph-fill');
-                    icon.classList.add('ph-heart');
+                    icon.classList.remove('bi-heart-fill');
+                    icon.classList.add('bi-heart');
                 }
             } else {
                 window.location.href = 'index.php?controller=auth&action=login';

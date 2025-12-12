@@ -28,12 +28,12 @@
                                 <div class="vote-controls d-flex flex-column align-items-center me-3 border-end pe-3">
                                     <button class="btn btn-sm text-secondary p-0 vote-btn"
                                         onclick="vote(<?= $comment['id'] ?>, 'up', this)">
-                                        <i class="ph-fill ph-caret-up fs-4"></i>
+                                        <i class="bi bi-caret-up-fill fs-4"></i>
                                     </button>
                                     <span class="vote-score fw-bold"><?= $comment['score'] ?></span>
                                     <button class="btn btn-sm text-secondary p-0 vote-btn"
                                         onclick="vote(<?= $comment['id'] ?>, 'down', this)">
-                                        <i class="ph-fill ph-caret-down fs-4"></i>
+                                        <i class="bi bi-caret-down-fill fs-4"></i>
                                     </button>
                                 </div>
 
