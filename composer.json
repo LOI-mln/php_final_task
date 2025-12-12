@@ -1,0 +1,10 @@
+{
+    "name": "r_social/project",
+    "description": "A native PHP MVC Social Network",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "require": {}
+}
