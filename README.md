@@ -1,6 +1,8 @@
-RESEAU SOCIAL - PROJET EXAM PHP MVC
+RESEAU SOCIAL
 
-Ce projet est un mini réseau social réalisé en PHP Natif avec une architecture MVC stricte.
+Ce projet est un mini réseau social réalisé en PHP avec une architecture MVC.
+
+Il fait en sorte que les differents utilisateurs peuvent avoir acces aux messages postés par les autres utilisateurs. De plus, les utilisateurs peuvent aussi poster des messages et les liker, ainsi que upvote ou downvote les commentaires.
 
 FONCTIONNALITES
 - Architecture MVC (Model-View-Controller)
@@ -8,22 +10,9 @@ FONCTIONNALITES
 - Fil d'actualite avec publications
 - Likes sans rechargement de page (AJAX)
 - Commentaires
-- Barre de recherche dynamique
-- Mode nuit (Dark Mode)
+- Barre de recherche
+- Notifications
+- Upvote et Downvote
+- Dark mode
 
-INSTALLATION
-1. Base de donnees :
-   - Ouvrir phpMyAdmin
-   - Creer une base de donnees
-   - Importer le fichier sql/schema.sql
-
-2. Configuration :
-   - Verifier que le projet est dans le dossier du serveur (htdocs)
-   - Verifier les identifiants BDD dans app/models/BaseModel.php si besoin
-
-3. Lancement :
-   - Ouvrir le navigateur
-   - Acceder a http://localhost:8888/php_final_task/
-
-AUTEUR
-Projet realise pour l'examen final.
+Réalisé par Ahmed MESRI et Milan LOÏ
