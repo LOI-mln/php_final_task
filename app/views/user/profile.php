@@ -5,7 +5,17 @@
                 <i class="bi bi-person-circle display-1 text-primary mb-3"></i>
                 <h2 class="card-title"><?= htmlspecialchars($user['nom']) ?></h2>
                 <p class="text-muted"><?= htmlspecialchars($user['email']) ?></p>
-                <p class="small text-secondary">Inscrit le <?= $user['date_inscription'] ?></p>
+                <p class="small text-secondary">Inscrit le <?= date('d/m/Y', strtotime($user['date_inscription'])) ?></p>
+                
+                <div class="mt-3">
+                    <span class="badge bg-primary rounded-pill"><?= count($posts) ?> Publications</span>
+                </div>
+
+                <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $user['id']): ?>
+                    <div class="mt-4">
+                        <a href="index.php?controller=profile&action=edit" class="btn btn-outline-secondary btn-sm">Modifier le profil</a>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
 
@@ -24,11 +34,16 @@
                             </a>
                         </h5>
                         <h6 class="card-subtitle mb-2 text-muted">
-                            <small><?= $post['date_publication'] ?></small>
+                            <small><?= date('d/m/Y H:i', strtotime($post['date_publication'])) ?></small>
                         </h6>
                         <p class="card-text"><?= nl2br(substr(htmlspecialchars($post['contenu']), 0, 150)) ?>...</p>
-                        <a href="index.php?controller=post&action=show&id=<?= $post['id'] ?>"
-                            class="btn btn-sm btn-outline-primary">Lire la suite</a>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="index.php?controller=post&action=show&id=<?= $post['id'] ?>"
+                                class="btn btn-sm btn-outline-primary">Lire la suite</a>
+                            <span class="text-muted small">
+                                <i class="bi bi-heart-fill text-danger"></i> <?= $post['like_count'] ?? 0 ?>
+                            </span>
+                        </div>
                     </div>
                 </div>
             <?php endforeach; ?>

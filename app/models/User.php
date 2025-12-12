@@ -37,4 +37,15 @@ class User extends BaseModel
         $stmt->execute(["%$term%", "%$term%"]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function update($id, $nom, $email, $password = null)
+    {
+        if ($password) {
+            $stmt = $this->pdo->prepare("UPDATE users SET nom = ?, email = ?, password = ? WHERE id = ?");
+            return $stmt->execute([$nom, $email, $password, $id]);
+        } else {
+            $stmt = $this->pdo->prepare("UPDATE users SET nom = ?, email = ? WHERE id = ?");
+            return $stmt->execute([$nom, $email, $id]);
+        }
+    }
 }

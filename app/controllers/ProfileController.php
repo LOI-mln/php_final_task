@@ -36,20 +36,62 @@ class ProfileController extends BaseController
             return;
         }
 
-        // Get user's posts (Need to filter in model or here)
-        // I will use getAll and filter here for simplicity as I didn't add getByUserId in Post model.
-        // Optimization: Add getByUserId in Post Model.
-        // For now, let's filter array or add Method to Post Model if easy.
-
-        // Let's add simple logic here or use getAll
-        $allPosts = $this->postModel->getAll();
-        $userPosts = array_filter($allPosts, function ($p) use ($id) {
-            return $p['utilisateur_id'] == $id;
-        });
+        // Get user's posts
+        $posts = $this->postModel->getByUserId($id);
 
         $this->render('user/profile', [
             'user' => $user,
-            'posts' => $userPosts
+            'posts' => $posts
         ]);
+    }
+
+    public function edit()
+    {
+        $this->requireAuth();
+        $id = $this->getCurrentUserId();
+        $user = $this->userModel->findById($id);
+
+        if (!$user) {
+            $this->redirect('index.php?controller=auth&action=login');
+        }
+
+        $this->render('user/edit', ['user' => $user]);
+    }
+
+    public function update()
+    {
+        $this->requireAuth();
+        $id = $this->getCurrentUserId();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $nom = $_POST['nom'] ?? '';
+            $email = $_POST['email'] ?? '';
+            $password = $_POST['password'] ?? '';
+            $confirm_password = $_POST['confirm_password'] ?? '';
+
+            // Basic validation
+            if (empty($nom) || empty($email)) {
+                // Handle error (flash message would be good here)
+                echo "Nom et Email sont requis.";
+                return;
+            }
+
+            $hashedPassword = null;
+            if (!empty($password)) {
+                if ($password !== $confirm_password) {
+                    echo "Les mots de passe ne correspondent pas.";
+                    return;
+                }
+                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            }
+
+            if ($this->userModel->update($id, $nom, $email, $hashedPassword)) {
+                // Update session name if changed
+                $_SESSION['user_name'] = $nom; // Assuming we store name in session
+                $this->redirect('index.php?controller=profile&action=show');
+            } else {
+                echo "Erreur lors de la mise à jour.";
+            }
+        }
     }
 }

@@ -62,7 +62,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item"
-                                        href="index.php?controller=user&action=profile&id=<?= $_SESSION['user_id'] ?>">Profil</a>
+                                        href="index.php?controller=profile&action=show&id=<?= $_SESSION['user_id'] ?>">Profil</a>
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider">

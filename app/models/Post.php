@@ -31,6 +31,19 @@ class Post extends BaseModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getByUserId($userId)
+    {
+        $sql = "SELECT p.*, u.nom as author_name, 
+                (SELECT COUNT(*) FROM likes WHERE post_id = p.id) as like_count
+                FROM posts p 
+                JOIN users u ON p.utilisateur_id = u.id 
+                WHERE p.utilisateur_id = ?
+                ORDER BY p.date_publication DESC";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$userId]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function update($id, $titre, $contenu)
     {
         $stmt = $this->pdo->prepare("UPDATE posts SET titre = ?, contenu = ? WHERE id = ?");
